@@ -1,0 +1,28 @@
+{
+  "name": "learn_wasm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve .",
+    "test": "node tests",
+    "asbuild": "del-cli build && npm run asbuild:debug && npm run asbuild:release",
+    "asbuild:debug": "asc assembly/index.ts --target debug",
+    "asbuild:release": "asc assembly/index.ts --target release"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "assemblyscript": "^0.26.1",
+    "del-cli": "^5.0.0",
+    "serve": "^14.1.2"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./build/release.js",
+      "types": "./build/release.d.ts"
+    }
+  }
+}
